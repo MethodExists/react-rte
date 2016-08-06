@@ -1,6 +1,6 @@
 /* @flow */
 import React, {Component} from 'react';
-import {CompositeDecorator, Editor, EditorState, Modifier, RichUtils} from 'draft-js';
+import {CompositeDecorator, EditorState, Modifier, RichUtils} from 'draft-js';
 import getDefaultKeyBinding from 'draft-js/lib/getDefaultKeyBinding';
 import changeBlockDepth from './lib/changeBlockDepth';
 import changeBlockType from './lib/changeBlockType';
@@ -14,6 +14,8 @@ import cx from 'classnames';
 import autobind from 'class-autobind';
 import {EventEmitter} from 'events';
 import {BLOCK_TYPE} from 'draft-js-utils';
+
+import Editor from 'draft-js-plugins-editor-wysiwyg';
 
 // $FlowIssue - Flow doesn't understand CSS Modules
 import './Draft.global.css';
@@ -38,6 +40,7 @@ type ChangeHandler = (value: EditorValue) => any;
 
 type Props = {
   className?: string;
+  plugins?: {[key: string]: any};
   toolbarClassName?: string;
   editorClassName?: string;
   value: EditorValue;
